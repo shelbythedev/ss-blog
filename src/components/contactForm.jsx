@@ -4,11 +4,15 @@ const ContactForm =() => {
   return (
     <form
       class="max-w-xl mx-auto p-6 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg space-y-4"
-      netlify
+      name="contact"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
     >
       <h2 class="text-2xl font-special-elite-regular text-teal-600 dark:text-teal-500">
         Contact Me
       </h2>
+
+      <input type="hidden" name="form-name" value="contact" />
 
       <input
         type="text"
