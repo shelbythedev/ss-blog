@@ -10,7 +10,7 @@ require("dotenv").config({
 module.exports = {
     siteMetadata: {
         title: `Shelby Solomon`,
-        siteUrl: process.env.SITE_URL,
+        siteUrl: "shelbysolomon.com",
         description: `Shelby Solomon's personal website`
     },
     plugins: [
