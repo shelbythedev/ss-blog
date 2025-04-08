@@ -1,1 +1,13 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+.font-special-elite-regular {
+    font-family: "Special Elite", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a[aria-current="page"] {
+    color: theme('colors.teal.600');
+}
+  
