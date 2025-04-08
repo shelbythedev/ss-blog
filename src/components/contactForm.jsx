@@ -6,7 +6,7 @@ const ContactForm =() => {
     email: "",
     message: "",
   });
-  const [status] = useState("idle");
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
