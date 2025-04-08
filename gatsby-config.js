@@ -10,7 +10,7 @@ require("dotenv").config({
 module.exports = {
     siteMetadata: {
         title: `Shelby Solomon`,
-        siteUrl: "shelbysolomon.com",
+        siteUrl: "https://shelbysolomon.netlify.app",
         description: `Shelby Solomon's personal website`
     },
     plugins: [
