@@ -15,26 +15,26 @@ const ContactForm =() => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus("sending");
-    const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setStatus("sending");
+  //   const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+  //   const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+  //   const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-    emailjs
-      .send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
-      .then(() => {
-        setStatus("sent");
-        setFormData({ name: "", email: "", message: "" });
-      })
-      .catch(() => setStatus("error"));
-  };
+  //   // emailjs
+  //   //   .send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
+  //   //   .then(() => {
+  //   //     setStatus("sent");
+  //   //     setFormData({ name: "", email: "", message: "" });
+  //   //   })
+  //   //   .catch(() => setStatus("error"));
+  // };
 
   return (
     <form
-      onSubmit={handleSubmit}
       className="max-w-xl mx-auto p-6 bg-white dark:bg-zinc-900 rounded-2xl shadow-lg space-y-4"
+      netlify
     >
       <h2 className="text-2xl font-special-elite-regular text-teal-600 dark:text-teal-500">
         Contact Me
