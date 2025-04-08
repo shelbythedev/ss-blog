@@ -10,7 +10,7 @@ require("dotenv").config({
 module.exports = {
     siteMetadata: {
         title: `Shelby Solomon`,
-        siteUrl: "https://shelbysolomon.netlify.app",
+        siteUrl: process.env.SITE_URL,
         description: `Shelby Solomon's personal website`
     },
     plugins: [
@@ -38,13 +38,6 @@ module.exports = {
             options: {
                 "icon": "src/images/icon.png"
             }
-        // }, "gatsby-plugin-mdx", {
-        //     resolve: 'gatsby-source-filesystem',
-        //     options: {
-        //         "name": "pages",
-        //         "path": "./src/pages/"
-        //     },
-        //     __key: "pages"
         }
     ]
 };
