@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { FaLinkedin, FaGithub, FaMedium, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
     return ( 
@@ -45,26 +46,50 @@ const Footer = () => {
                 {/* Social or Contact */}
                 <div>
                     <p className="mb-2 font-semibold text-teal-600">Let’s Connect</p>
-                    <ul className="flex space-x-4">
+                    <ul className="flex space-x-4  text-2xl">
                         <li>
-                        <a
+                            <a
+                            href="https://www.linkedin.com/in/ssolomondev/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="LinkedIn"
+                            className="hover:text-teal-600 transition-colors"
+                            >
+                            <FaLinkedin />
+                            </a>
+                        </li>
+                        <li>
+                            <a
                             href="https://github.com/shelbythedev"
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="GitHub"
-                            className="hover:text-teal-600"
-                        >
-                            GitHub
-                        </a>
+                            className="hover:text-teal-600 transition-colors"
+                            >
+                            <FaGithub />
+                            </a>
                         </li>
                         <li>
-                        <a
-                            href="mailto:shelby@shelbysolomon.net"
-                            className="hover:text-teal-600"
-                            aria-label="Email"
-                        >
-                            Email
-                        </a>
+                            <a
+                            href="https://www.instagram.com/in.pursuit.of.patina/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram"
+                            className="hover:text-teal-600 transition-colors"
+                            >
+                            <FaInstagram />
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                            href="https://shelbysolomon.medium.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Medium"
+                            className="hover:text-teal-600 transition-colors"
+                            >
+                            <FaMedium />
+                            </a>
                         </li>
                     </ul>
                 </div>
