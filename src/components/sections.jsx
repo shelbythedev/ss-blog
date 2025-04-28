@@ -2,6 +2,7 @@ import React from "react"
 import teamLead from "../images/teamLead.png"
 import shelby from "../images/shelby.jpg"
 import modelA from "../images/modelA.jpg"
+import underwood from "../images/1914underwood.png"
 
 const Sections = () => {
     return ( 
@@ -40,7 +41,7 @@ const Sections = () => {
                 <img
                     src={modelA}
                     alt="Ford Model A and vintage typewriter collection"
-                    className="w-full md:w-1/3 rounded-2xl shadow-lg"
+                    className="w-full md:w-1/4 rounded-2xl shadow-lg"
                 />
                 <div>
                     <h2 className="text-3xl font-bold font-special-elite-regular text-teal-600 mb-4 dark:text-teal-600">
@@ -50,6 +51,11 @@ const Sections = () => {
                     I collect and restore vintage typewriters and antique automobiles—especially Ford Model A’s. These aren’t just display pieces: they’re functional, well-loved machines that I maintain and use. Typewriters remind me of the beauty in simplicity and craftsmanship, while my Model A’s connect me to a hands-on mechanical world that predates modern software. Sometimes the best way to appreciate progress is to spend time with the past.
                     </p>
                 </div>
+                <img
+                    src={underwood}
+                    alt="vintage typewriter collection"
+                    className="w-full md:w-1/4 rounded-2xl shadow-lg"
+                />
             </section>
         </div>
     )
