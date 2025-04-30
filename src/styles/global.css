@@ -22,13 +22,8 @@ a[aria-current="page"] {
 
 .prose p {
     font-family: sans-serif;
-    color: theme('colors.gray.700'); /* Light mode text color */
     line-height: 1.75;
     margin-bottom: 1.25rem;
-}
-
-.dark .prose p {
-    color: theme('colors.gray.300'); /* Dark mode text color */
 }
 
 .prose a {

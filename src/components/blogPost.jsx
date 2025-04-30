@@ -118,7 +118,7 @@ const BlogPost = ({ data }) => {
                     </div>
                 ) : (
                     rawContent && (
-                        <div className="prose dark:prose-invert max-w-none">
+                        <div className="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
                             <ReactMarkdown>{rawContent}</ReactMarkdown>
                         </div>
                     )
