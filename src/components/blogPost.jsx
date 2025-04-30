@@ -10,11 +10,16 @@ const BlogPost = ({ data }) => {
 
     // Determine the default view based on screen size
     const [view, setView] = useState(() => {
-        return window.innerWidth >= 768 ? 'pages' : 'raw'; // Default to 'pages' on large screens, 'raw' on mobile
+        if (typeof window !== 'undefined') {
+            return window.innerWidth >= 768 ? 'pages' : 'raw'; // Default to 'pages' on large screens, 'raw' on mobile
+        }
+        return 'raw'; // Default to 'raw' during SSR
     });
 
     // Update the view dynamically on window resize
     useEffect(() => {
+        if (typeof window === 'undefined') return;
+
         const handleResize = () => {
             setView(window.innerWidth >= 768 ? 'pages' : 'raw');
         };
