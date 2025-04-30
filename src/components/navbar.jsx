@@ -26,6 +26,9 @@ const Navbar = () => {
                     <li>
                     <Link to="/about/" class="block py-2 px-3 text-zinc-900 rounded-sm hover:bg-zinc-100 md:hover:bg-transparent md:border-0 md:hover:text-teal-700 md:p-0 dark:text-white md:dark:hover:text-teal-300 dark:hover:bg-zinc-600 dark:hover:text-white md:dark:hover:bg-transparent">About</Link>
                     </li>
+                    <li>
+                    <Link to="/blog/" class="block py-2 px-3 text-zinc-900 rounded-sm hover:bg-zinc-100 md:hover:bg-transparent md:border-0 md:hover:text-teal-700 md:p-0 dark:text-white md:dark:hover:text-teal-300 dark:hover:bg-zinc-600 dark:hover:text-white md:dark:hover:bg-transparent">Blog</Link>
+                    </li>
                     {/* <li>
                     <a href="#" class="block py-2 px-3 text-zinc-900 rounded-sm hover:bg-zinc-100 md:hover:bg-transparent md:border-0 md:hover:text-teal-700 md:p-0 dark:text-white md:dark:hover:text-teal-300 dark:hover:bg-zinc-600 dark:hover:text-white md:dark:hover:bg-transparent">Leadership</a>
                     </li>
