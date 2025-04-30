@@ -94,35 +94,37 @@ const BlogPost = ({ data }) => {
                 </p>
 
                 {/* Toggle for Switching Views */}
-                <div className="mb-4 flex justify-center">
-                    <div className="flex items-center space-x-2">
-                        <FaFileAlt
-                            className={`text-2xl ${
-                                view === 'pages' ? 'text-teal-600 dark:text-teal-400' : 'text-gray-400'
-                            }`}
-                        />
-                        <label className="relative inline-flex items-center cursor-pointer">
-                            <input
-                                type="checkbox"
-                                className="sr-only peer"
-                                checked={view === 'raw'}
-                                onChange={() => setView(view === 'pages' ? 'raw' : 'pages')}
+                {rawContent && (
+                    <div className="mb-4 flex justify-center">
+                        <div className="flex items-center space-x-2">
+                            <FaFileAlt
+                                className={`text-2xl ${
+                                    view === 'pages' ? 'text-teal-600 dark:text-teal-400' : 'text-gray-400'
+                                }`}
                             />
-                            <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-teal-400 dark:bg-gray-700 rounded-full peer dark:peer-focus:ring-teal-600 peer-checked:bg-teal-600">
-                                <div
-                                    className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transform transition-transform ${
-                                        view === 'raw' ? 'translate-x-7' : ''
-                                    }`}
-                                ></div>
-                            </div>
-                        </label>
-                        <FaFont
-                            className={`text-2xl ${
-                                view === 'raw' ? 'text-teal-600 dark:text-teal-400' : 'text-gray-400'
-                            }`}
-                        />
+                            <label className="relative inline-flex items-center cursor-pointer">
+                                <input
+                                    type="checkbox"
+                                    className="sr-only peer"
+                                    checked={view === 'raw'}
+                                    onChange={() => setView(view === 'pages' ? 'raw' : 'pages')}
+                                />
+                                <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-teal-400 dark:bg-gray-700 rounded-full peer dark:peer-focus:ring-teal-600 peer-checked:bg-teal-600">
+                                    <div
+                                        className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md transform transition-transform ${
+                                            view === 'raw' ? 'translate-x-7' : ''
+                                        }`}
+                                    ></div>
+                                </div>
+                            </label>
+                            <FaFont
+                                className={`text-2xl ${
+                                    view === 'raw' ? 'text-teal-600 dark:text-teal-400' : 'text-gray-400'
+                                }`}
+                            />
+                        </div>
                     </div>
-                </div>
+                )}
 
                 {/* Content Display */}
                 {view === 'pages' && pages.length > 0 ? (
