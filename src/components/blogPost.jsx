@@ -7,7 +7,9 @@ import { FaFont, FaFileAlt } from 'react-icons/fa'; // Import icons
 
 const BlogPost = ({ data }) => {
     const { title, createdAt, author, pages, tags, post } = data.contentfulBlogPost;
-    const [view, setView] = useState('pages'); // Default view is 'pages'
+
+    // Default view set to 'raw' (post view)
+    const [view, setView] = useState('raw');
 
     // Helper function to parse raw JSON content
     const parseRawContent = (raw) => {
