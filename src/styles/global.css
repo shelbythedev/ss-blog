@@ -22,10 +22,13 @@ a[aria-current="page"] {
 
 .prose p {
     font-family: sans-serif;
-    color: theme('colors.gray.700');
+    color: theme('colors.gray.700'); /* Light mode text color */
     line-height: 1.75;
-    /* text-indent: 1.5rem; */
     margin-bottom: 1.25rem;
+}
+
+.dark .prose p {
+    color: theme('colors.gray.300'); /* Dark mode text color */
 }
 
 .prose a {
@@ -36,10 +39,15 @@ a[aria-current="page"] {
 .prose ul {
     list-style-type: disc;
     padding-left: 1.5rem;
+    margin-bottom: 1.25rem; /* Add spacing below lists */
 }
 
 .prose li {
     font-family: "Special Elite", system-ui;
     color: theme('colors.gray.700');
     margin-bottom: 0.5rem;
+}
+
+.dark .prose li {
+    color: theme('colors.gray.300'); /* Dark mode list item color */
 }
