@@ -1,14 +1,24 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import { FaLinkedin, FaGithub, FaMedium, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
-    return ( 
+    const data = useStaticQuery(graphql`
+        query {
+            allContentfulBlogPost {
+                distinct(field: { tags: { category: SELECT } })
+            }
+        }
+    `);
+
+    const tags = data.allContentfulBlogPost.distinct;
+
+    return (
         <footer
-        className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-300 text-sm mt-16"
-        role="contentinfo"
-        itemScope
-        itemType="http://schema.org/WPFooter"
+            className="bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-300 text-sm mt-16"
+            role="contentinfo"
+            itemScope
+            itemType="http://schema.org/WPFooter"
         >
             <div className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
                 {/* Site Info */}
@@ -26,12 +36,30 @@ const Footer = () => {
                     <ul className="space-y-2">
                         <li>
                             <Link
+                                to="/"
+                                className="hover:text-teal-600 transition-colors"
+                            >
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
                                 to="/about"
                                 className="hover:text-teal-600 transition-colors"
                             >
                                 About
                             </Link>
                         </li>
+                        {tags.map((tag, index) => (
+                            <li key={index}>
+                                <Link
+                                    to={`/blog/?tag=${tag}`}
+                                    className="hover:text-teal-600 transition-colors"
+                                >
+                                    {tag}
+                                </Link>
+                            </li>
+                        ))}
                         <li>
                             <Link
                                 to="/contact"
@@ -46,49 +74,49 @@ const Footer = () => {
                 {/* Social or Contact */}
                 <div>
                     <p className="mb-2 font-semibold text-teal-600">Let’s Connect</p>
-                    <ul className="flex space-x-4  text-2xl">
+                    <ul className="flex space-x-4 text-2xl">
                         <li>
                             <a
-                            href="https://www.linkedin.com/in/ssolomondev/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="LinkedIn"
-                            className="hover:text-teal-600 transition-colors"
+                                href="https://www.linkedin.com/in/ssolomondev/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="LinkedIn"
+                                className="hover:text-teal-600 transition-colors"
                             >
-                            <FaLinkedin />
+                                <FaLinkedin />
                             </a>
                         </li>
                         <li>
                             <a
-                            href="https://github.com/shelbythedev"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="GitHub"
-                            className="hover:text-teal-600 transition-colors"
+                                href="https://github.com/shelbythedev"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="GitHub"
+                                className="hover:text-teal-600 transition-colors"
                             >
-                            <FaGithub />
+                                <FaGithub />
                             </a>
                         </li>
                         <li>
                             <a
-                            href="https://www.instagram.com/in.pursuit.of.patina/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram"
-                            className="hover:text-teal-600 transition-colors"
+                                href="https://www.instagram.com/in.pursuit.of.patina/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Instagram"
+                                className="hover:text-teal-600 transition-colors"
                             >
-                            <FaInstagram />
+                                <FaInstagram />
                             </a>
                         </li>
                         <li>
                             <a
-                            href="https://shelbysolomon.medium.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Medium"
-                            className="hover:text-teal-600 transition-colors"
+                                href="https://shelbysolomon.medium.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Medium"
+                                className="hover:text-teal-600 transition-colors"
                             >
-                            <FaMedium />
+                                <FaMedium />
                             </a>
                         </li>
                     </ul>
@@ -97,11 +125,11 @@ const Footer = () => {
 
             <div className="border-t border-zinc-300 dark:border-zinc-700 text-center py-4">
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                &copy; {new Date().getFullYear()} Shelby Solomon. All rights reserved.
+                    &copy; {new Date().getFullYear()} Shelby Solomon. All rights reserved.
                 </p>
             </div>
         </footer>
-  );
-}
+    );
+};
 
-export default Footer
+export default Footer;
