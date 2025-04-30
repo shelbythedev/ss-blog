@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
@@ -8,8 +8,22 @@ import { FaFont, FaFileAlt } from 'react-icons/fa'; // Import icons
 const BlogPost = ({ data }) => {
     const { title, createdAt, author, pages, tags, post } = data.contentfulBlogPost;
 
-    // Default view set to 'raw' (post view)
-    const [view, setView] = useState('raw');
+    // Determine the default view based on screen size
+    const [view, setView] = useState(() => {
+        return window.innerWidth >= 768 ? 'pages' : 'raw'; // Default to 'pages' on large screens, 'raw' on mobile
+    });
+
+    // Update the view dynamically on window resize
+    useEffect(() => {
+        const handleResize = () => {
+            setView(window.innerWidth >= 768 ? 'pages' : 'raw');
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     // Helper function to parse raw JSON content
     const parseRawContent = (raw) => {

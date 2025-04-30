@@ -38,6 +38,18 @@ module.exports = {
             options: {
                 "icon": "src/images/icon.png"
             }
-        }
+        },
+        {
+            resolve: `gatsby-plugin-google-gtag`,
+            options: {
+                trackingIds: [
+                    "G-P084GSE1QG", // Replace with your Google Analytics Measurement ID
+                ],
+                pluginConfig: {
+                    head: true, // Puts tracking script in the head of the document
+                    respectDNT: true, // Respects "Do Not Track" settings
+                },
+            },
+        },
     ]
 };
