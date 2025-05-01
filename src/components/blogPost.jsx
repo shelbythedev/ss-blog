@@ -8,29 +8,7 @@ import { FaFont, FaFileAlt } from 'react-icons/fa'; // Import icons
 const BlogPost = ({ data }) => {
     const { title, createdAt, author, pages, tags, post } = data.contentfulBlogPost;
 
-    // Determine the default view based on screen size
-    const [view, setView] = useState(() => {
-        if (typeof window !== 'undefined') {
-            return window.innerWidth >= 768 ? 'pages' : 'raw'; // Default to 'pages' on large screens, 'raw' on mobile
-        }
-        return 'raw'; // Default to 'raw' during SSR
-    });
-
-    // Update the view dynamically on window resize
-    useEffect(() => {
-        if (typeof window === 'undefined') return;
-
-        const handleResize = () => {
-            setView(window.innerWidth >= 768 ? 'pages' : 'raw');
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    // Helper function to parse raw JSON content
+    // Parse raw content if it exists
     const parseRawContent = (raw) => {
         try {
             const parsed = JSON.parse(raw);
@@ -63,6 +41,34 @@ const BlogPost = ({ data }) => {
 
     const rawContent = post?.raw ? parseRawContent(post.raw) : '';
 
+    // Determine the default view based on content availability
+    const [view, setView] = useState(() => {
+        if (pages.length > 0 && rawContent) {
+            return typeof window !== 'undefined' && window.innerWidth >= 768 ? 'pages' : 'raw';
+        } else if (pages.length > 0) {
+            return 'pages';
+        } else if (rawContent) {
+            return 'raw';
+        }
+        return null; // No content available
+    });
+
+    // Update the view dynamically on window resize
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+
+        const handleResize = () => {
+            if (pages.length > 0 && rawContent) {
+                setView(window.innerWidth >= 768 ? 'pages' : 'raw');
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [pages, rawContent]);
+
     return (
         <div className="min-h-screen bg-white dark:bg-zinc-900 flex flex-col">
             <Navbar />
@@ -94,7 +100,7 @@ const BlogPost = ({ data }) => {
                 </p>
 
                 {/* Toggle for Switching Views */}
-                {rawContent && (
+                {pages.length > 0 && rawContent && (
                     <div className="mb-4 flex justify-center">
                         <div className="flex items-center space-x-2">
                             <FaFileAlt
